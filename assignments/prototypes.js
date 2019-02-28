@@ -176,6 +176,7 @@ Villian.prototype.kill = function () {
 
 //HERO
 function Hero (heroAttributes){
+  this.superWeapon = heroAttributes.superWeapon;
   this.opponentHealth = heroAttributes.opponentHealth;
 
   Humanoid.call(this, heroAttributes);
@@ -186,7 +187,7 @@ Hero.prototype = Object.create(Humanoid.prototype);
 //METHODS
 Hero.prototype.heroAttack = function() {
   this.opponentHealth -= 80; 
-  return `The hero ${this.name} receives his weapon from Cat Woman ${this.weapons}... and seriously F's up the villian`; 
+  return `The hero ${this.name} receives his weapon from Cat Woman, ${this.superWeapon} and seriously F's up the emotionally stunted villian`; 
 }
 
 //HERO
@@ -201,10 +202,11 @@ const hero = new Hero({
   name: 'Flying Rodent Man',
   team: 'Gotcha City',
   weapons: [
-    'Money' , 'Utility Belt' , 'Cat Treats'
+    'Money' , 'Utility Belt' , 'Cat Treats',
   ],
+  superWeapon: 'A Hug',
   language: 'English',
-  opponentHealth: 100
+  opponentHealth: 100,
 });
 
 
@@ -220,11 +222,11 @@ villain = new Villian({
   name: 'Crazy Clown',
   team: 'Asylum',
   weapons: [
-    'Tricks', 'Jokes', 'Poisonous fumes', 'Wit'
+    'Tricks', 'Jokes', 'laughing gas', 'Wit'
   ],
   language: 'Humorish',
   killShot: 'Killing Joke',
-  opponentHealth: 100
+  opponentHealth: 100,
 });
 
 //STORY TIME
@@ -242,3 +244,5 @@ console.log(`${hero.name} has been reduced, ${hero.name} now has ${villain.oppon
 console.log(hero.heroAttack());
 console.log(`${villain.name} has been reduced, ${villain.name} now has ${villain.opponentHealth} and retreats to his dark corner of the world.`);
 console.log(`${hero.name} annouces: NOW ALL IS RIGHT IN GOTHAM, I MEAN THE KINGDOM!  TILL NEXT TIME.`); 
+
+//for some reason the attacks arent calculating properly
